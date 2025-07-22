@@ -1,0 +1,48 @@
+## First Docker 
+
+docker pull ubuntu:latest 
+
+The above command will pull the latest ubuntu image. 
+
+Task : To start the ubuntu container and create a dockerfile
+
+red@Amits-MacBook-Air Docker % docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+e3bd89a9dac5: Pull complete 
+Digest: sha256:a08e551cb33850e4740772b38217fc1796a66da2506d312abe51acda354ff061
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview ubuntu
+red@Amits-MacBook-Air Docker % docker ps 
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+red@Amits-MacBook-Air Docker % docker run --name ubuntuX ubuntu
+red@Amits-MacBook-Air Docker % docker ps    
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+red@Amits-MacBook-Air Docker % docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                      PORTS     NAMES
+f46a4facd80f   ubuntu    "/bin/bash"   15 seconds ago   Exited (0) 15 seconds ago             ubuntuX
+
+
+The container has been Exited (0) as it doesn't have any thing to excute. 
+
+vim Dockerfile
+red@Amits-MacBook-Air Docker % cat Dockerfile 
+FROM ubuntu:latest
+CMD ["echo", "Hello from my first docker image!"]
+
+
+red@Amits-MacBook-Air Docker % docker build .
+
+red@Amits-MacBook-Air Docker % docker images
+REPOSITORY                                          TAG       IMAGE ID       CREATED         SIZE
+nginx                                               latest    af5dda48e624   7 days ago      198MB
+ubuntu                                              latest    b24db5c17bb8   7 days ago      101MB
+
+
+
+red@Amits-MacBook-Air Docker % docker run d71871b1b787
+Hello from my first docker image!
+
